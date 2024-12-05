@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%=webName%> : Add a Subject</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=webName%> : Add a Subject</h1>
+    <form method="POST" action="/subjectadded">
+        <p>Subject: <input id="name" type="text" name="subject" value="Subject?" /></p>
+        <p>Level: 
+            <select id="level" name="level">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </p>
+        <p>Price per hour: <input type="price" name="price" /></p>
+        <p>Duration: <input type="number" name="quantity" /></p>
+        <input type="submit" value="Add Subject" />
+      </form>
+  </body>
+</html>
