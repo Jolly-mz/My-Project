@@ -27,6 +27,14 @@ router.get('/addsubjects', function (req,res) {
     res.render('addsubjects.ejs', webData);                                                                     
 });    
 
+router.get('/search',function(req,res){
+    res.render("search.ejs", webData);
+});
+
+router.get('/searchresult', function (req, res) {
+    res.send("You searched for: " + req.query.keyword);
+});
+
 router.get('/subjects', function(req, res) {
     let sqlquery = "SELECT * FROM subjects";
     db.query(sqlquery, (err, result) => {
