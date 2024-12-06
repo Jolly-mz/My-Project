@@ -27,6 +27,22 @@ router.get('/addsubjects', function (req,res) {
     res.render('addsubjects.ejs', webData);                                                                     
 });    
 
+router.post('/subjectadded', function (req,res) {
+    // saving data in database
+    let sqlquery = "INSERT INTO subjects (name, level, price, hour) VALUES(?,?,?,?)";
+    // execute sql query
+    let newrecord = [req.body.name, req.body.level, req.body.price, req.body.hour];
+    db.query(sqlquery, newrecord, (err, result) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      else {
+        res.send(' The Subject is added to database, Name: '
+                  + req.body.name + ' Level: '+ req.body.level + ' Price: '+ req.body.price + ' Hour: '+ req.body.hour);
+      }
+    });
+}); 
+
 router.get('/search',function(req,res){
     res.render("search.ejs", webData);
 });

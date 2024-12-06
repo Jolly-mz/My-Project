@@ -7,7 +7,7 @@
   <body>
     <h1><%=webName%> : Add a Subject</h1>
     <form method="POST" action="/subjectadded">
-        <p>Subject: <input id="name" type="text" name="subject" value="Subject?" /></p>
+        <p>Subject: <input id="name" type="name" name="name" value="subject?" /></p>
         <p>Level: 
             <select id="level" name="level">
               <option value="Beginner">Beginner</option>
@@ -16,7 +16,7 @@
             </select>
           </p>
         <p>Price per hour: <input type="price" name="price" /></p>
-        <p>Duration: <input type="number" name="quantity" /></p>
+        <p>Duration: <input type="hour" name="hour" /></p>
         <input type="submit" value="Add Subject" />
       </form>
   </body>
