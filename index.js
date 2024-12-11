@@ -23,6 +23,11 @@ const db = mysql.createConnection ({
     database: 'tutors4you'
 });
 
+const grantQuery = `
+GRANT ALL PRIVILEGES ON tutors4you.* TO 'tutors4you_app'@'localhost' IDENTIFIED BY '12345qwert';
+FLUSH PRIVILEGES;
+`;
+
 db.connect((err) => {
     if (err) {
         throw err;
