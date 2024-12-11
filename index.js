@@ -19,7 +19,6 @@ app.listen(port, () => console.log(`App is running on port ${port}!`))
 const db = mysql.createConnection ({
     host: 'localhost',
     user: 'tutors4you_app',
-    password: '12345qwert',
     database: 'tutors4you'
 });
 
