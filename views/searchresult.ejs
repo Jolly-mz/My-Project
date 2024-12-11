@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search Results for <%= keyword %></title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Search Results for "<%= keyword %>"</h1>
+
+    <% if (searchResults.length > 0) { %>
+      <table class="subjects-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Level</th>
+            <th>Price</th>
+            <th>Hour</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% searchResults.forEach(function(subject) { %>
+            <tr>
+              <td><%= subject.name %></td>
+              <td><%= subject.level %></td>
+              <td><%= subject.price %></td>
+              <td><%= subject.hour %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No subjects found matching "<%= keyword %>". Please try again with a different search term.</p>
+    <% } %>
+  </body>
+</html>

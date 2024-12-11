@@ -47,8 +47,22 @@ router.get('/search',function(req,res){
     res.render("search.ejs", webData);
 });
 
-router.get('/searchresult', function (req, res) {
-    res.send("You searched for: " + req.query.keyword);
+router.get('/searchresult', (req, res) => {
+    const keyword = req.query.keyword.toLowerCase(); //Get the word and make it lower case
+    const query = `SELECT * FROM subjects WHERE LOWER(name) LIKE '%${keyword}%'`; //Using % to make sure partial matches works as well for example like "Chin" works for "Chinese"
+    const searchKeyword = `%${keyword}%`; //Define searchKeyword
+
+    db.query(query, [searchKeyword], (err, results) => {
+        if (err) {
+            console.error("Database query error: ", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            res.render('searchresult', {
+                keyword: req.query.keyword, //The keyword to the website
+                searchResults: results,    //Getting the database results to the website
+            });
+        }
+    });
 });
 
 router.get('/subjects', function(req, res) {
